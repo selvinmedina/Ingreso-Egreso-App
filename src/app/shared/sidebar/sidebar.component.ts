@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class SidebarComponent implements OnInit {
+  constructor(private authService: AuthService, private route: Router) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logout() {
+    console.log('click');
+
+    Swal.showLoading()
+    this.authService.logout().then(() => {
+      Swal.close()
+      this.route.navigate(['/login']);
+    });
   }
-
 }
