@@ -9,13 +9,13 @@ export const initialState: State = {
    isLoading: false,
 }
 
-const _LoadingReducer = createReducer(initialState,
+const _UiReducer = createReducer(initialState,
 
     on(isLoading, state => ({ ...state, isLoading: true})),
     on(stopLoading, state => ({ ...state, isLoading: false})),
 
 );
 
-export function LoadingReducer(state, action) {
-    return _LoadingReducer(state, action);
+export function UiReducer(state, action) {
+    return _UiReducer(state, action);
 }

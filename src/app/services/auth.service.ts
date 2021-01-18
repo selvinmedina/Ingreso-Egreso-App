@@ -14,9 +14,6 @@ export class AuthService {
 
   initAuthService() {
     this.auth.authState.subscribe((fUser) => {
-      console.log(fUser);
-      console.log(fUser?.uid);
-      console.log(fUser?.email);
     });
   }
 
