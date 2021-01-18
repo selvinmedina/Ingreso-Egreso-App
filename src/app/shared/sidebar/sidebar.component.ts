@@ -17,7 +17,10 @@ export class SidebarComponent implements OnInit {
     console.log('click');
 
     Swal.showLoading()
-    this.authService.logout().then(() => {
+    this.authService.logout()
+      .then(() => {
+        console.log('cerrer sesion');
+
       Swal.close()
       this.route.navigate(['/login']);
     });
