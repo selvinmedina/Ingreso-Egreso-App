@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 
 import { AppState } from '../app.reducer';
 import * as auth from '../auth/auth.actions';
+import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
+
 import { Usuario } from '../models/usuario.model';
 
 @Injectable({
@@ -18,8 +20,8 @@ export class AuthService {
   userSubs: Subscription;
   private _user: Usuario;
 
-  get user(){
-    return {...this._user};
+  get user() {
+    return { ...this._user };
   }
 
   constructor(
@@ -30,7 +32,6 @@ export class AuthService {
 
   initAuthService() {
     this.auth.authState.subscribe((fUser) => {
-
       if (fUser) {
         this.userSubs = this.firestore
           .doc(`${fUser.uid}/usuario`)
@@ -40,11 +41,11 @@ export class AuthService {
             this._user = user;
             this.store.dispatch(auth.setUser({ user }));
           });
-        //.unsubscribe();
-      } else {
-        if (this.userSubs) {
-          this.userSubs.unsubscribe();
-        }
+        } else {
+          if (this.userSubs) {
+            this.userSubs.unsubscribe();
+          }
+          this.store.dispatch(ingresoEgresoActions.unSetItems());
         this.store.dispatch(auth.unSetUser());
       }
     });

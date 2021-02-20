@@ -8,6 +8,7 @@ import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import * as ui from 'src/app/shared/ui.actions';
 import { Subscription } from 'rxjs';
+import { getTypeDescription } from '../shared/helper/helpers';
 
 @Component({
   selector: 'app-ingreso-egreso',
@@ -58,7 +59,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
 
         Swal.fire({
           title: 'Success!',
-          text: `The ${this.getTypeDescription(
+          text: `The ${getTypeDescription(
             this.tipo
           )} is created successfully`,
           icon: 'success',
@@ -82,18 +83,5 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.uiSubscription.unsubscribe();
-  }
-
-  private getTypeDescription(tipo: TipoIngreso) {
-    switch (tipo) {
-      case TipoIngreso.Ingreso:
-        return 'Ingreso';
-      case TipoIngreso.Egreso:
-        return 'Egreso';
-        break;
-
-      default:
-        break;
-    }
   }
 }
