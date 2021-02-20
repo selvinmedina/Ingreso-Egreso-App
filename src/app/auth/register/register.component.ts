@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.uiSubscription = this.store.select('ui').subscribe((ui) => {
       this.cargando = ui.isLoading;
-      console.log('cargando subs');
     });
   }
 
@@ -47,17 +46,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.store.dispatch(ui.isLoading())
+    this.store.dispatch(ui.isLoading());
     const { nombre, correo, password } = this.registroForm.value;
 
     this.authService
-    .crearUsuario(nombre, correo, password)
-    .then((credenciales) => {
-      this.store.dispatch(ui.stopLoading())
-      this.router.navigate(['/']);
-    })
-    .catch((error) => {
-        this.store.dispatch(ui.stopLoading())
+      .crearUsuario(nombre, correo, password)
+      .then((credenciales) => {
+        this.store.dispatch(ui.stopLoading());
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        this.store.dispatch(ui.stopLoading());
         Swal.fire({
           title: 'Error!',
           text: error.message,
