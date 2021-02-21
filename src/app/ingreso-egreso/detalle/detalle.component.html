@@ -15,7 +15,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of ingresoEgresos">
+            <tr *ngFor="let item of ingresoEgresos | ordenIngreso">
               <td>{{item.descripcion}}</td>
               <td>{{item.monto}}</td>
               <td [class.text-success]="item.tipo=== tipoIngreso.Ingreso" [class.text-danger]="item.tipo=== tipoIngreso.Egreso" class="">{{getTypeDescription(item.tipo)}}</td>

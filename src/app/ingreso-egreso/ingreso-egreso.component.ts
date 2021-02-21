@@ -59,9 +59,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
 
         Swal.fire({
           title: 'Success!',
-          text: `The ${getTypeDescription(
-            this.tipo
-          )} is created successfully`,
+          text: `The ${getTypeDescription(this.tipo)} is created successfully`,
           icon: 'success',
           confirmButtonText: 'Ok',
         });
@@ -72,7 +70,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
         console.warn(err);
         Swal.fire({
           title: 'Error',
-          text: `Oh, there was an error creating the ${this.getTypeDescription(
+          text: `Oh, there was an error creating the ${getTypeDescription(
             this.tipo
           )}`,
           icon: 'error',
@@ -81,7 +79,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.uiSubscription.unsubscribe();
   }
 }

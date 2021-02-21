@@ -16,6 +16,9 @@ export class IngresoEgresoService {
 
   crearIngresoEgreso(ingresoEgreso: IngresoEgreso) {
     const uid = this._authService.user.uid;
+
+    delete ingresoEgreso.uid;
+
     return this.fireStore
       .doc(`${uid}/ingresos-egresos`)
       .collection('items')
@@ -34,5 +37,12 @@ export class IngresoEgresoService {
           }));
         })
       );
+  }
+
+  borrarIngresoEgreso(uidItem: string) {
+    const uid = this._authService.user.uid;
+    return this.fireStore
+      .doc(`${uid}/ingresos-egresos/items/${uidItem}`)
+      .delete();
   }
 }
