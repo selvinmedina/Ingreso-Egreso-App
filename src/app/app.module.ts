@@ -29,6 +29,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { appReducers } from './app.reducer';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,7 @@ import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
