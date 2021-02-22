@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { appReducers } from './app.reducer';
 
 import { AuthModule } from './auth/auth/auth.module';
-import { IngresoEgresoModule } from './ingreso-egreso/ingreso-egreso.module';
 
 @NgModule({
   declarations: [AppComponent],
