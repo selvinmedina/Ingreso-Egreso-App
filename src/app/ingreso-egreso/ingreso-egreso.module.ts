@@ -6,6 +6,8 @@ import { EstadisticaComponent } from './estadistica/estadistica.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { OrdenIngresoPipe } from '../pipes/orden-ingreso.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetalleComponent,
     OrdenIngresoPipe,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ChartsModule, ReactiveFormsModule, SharedModule],
 })
 export class IngresoEgresoModule {}
