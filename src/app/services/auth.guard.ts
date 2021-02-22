@@ -5,15 +5,18 @@ import {
   RouterStateSnapshot,
   UrlTree,
   Router,
+  CanLoad,
+  Route,
+  UrlSegment,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
   constructor(private authService: AuthService, private route: Router) {}
 
   canActivate(
@@ -26,6 +29,17 @@ export class AuthGuard implements CanActivate {
           this.route.navigate(['/login']);
         }
       })
+    );
+  }
+
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
+    return this.authService.isAuth().pipe(
+      tap((estado) => {
+        if (!estado) {
+          this.route.navigate(['/login']);
+        }
+      }),
+      take(1)
     );
   }
 }

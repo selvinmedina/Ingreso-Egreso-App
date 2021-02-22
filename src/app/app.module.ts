@@ -25,7 +25,6 @@ import { IngresoEgresoModule } from './ingreso-egreso/ingreso-egreso.module';
   imports: [
     BrowserModule,
     AuthModule,
-    IngresoEgresoModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
