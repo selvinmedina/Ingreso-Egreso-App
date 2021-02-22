@@ -34,9 +34,10 @@ export class EstadisticaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store
-      .select('ingresosEgresos')
-      .subscribe(({ items }) => this.generarEstadistica(items));
+    this.store.subscribe(items => {
+      console.log(items)
+      // this.generarEstadistica(items);
+    });
   }
 
   generarEstadistica(items: IngresoEgreso[]) {
